@@ -2,7 +2,10 @@
 	<view class="homepage">
 		<view class="header">
 			<view class="header_city">南京</view>
-			<input class="header_search_input" confirm-type="search" placeholder="搜索课程老师等关键字" placeholder-style="color:#b3b3b3" />
+			<view class="header_search">
+				<input class="header_search_input" confirm-type="search" placeholder="搜索课程老师等关键字" placeholder-style="color:#b3b3b3; font-size:22rpx;" />
+				<view class="icon-search"></view>
+			</view>
 		</view>
 		<view class="banner">
 			<image class="banner_img" src="../../static/images/banner.png" mode="widthFix"></image>
@@ -45,27 +48,8 @@
 					<navigator class="course_header_more" url="">更多></navigator>
 				</view>
 				<view class="course_live">
-					<navigator class="course_live_item" url="">
-						<view class="course_live_item_img">
-							<image src="../../static/images/live-background-img.png" mode="widthFix"></image>
-							<view class="icon_live"></view>
-							<view class="live_describe">
-								<text class="live_describe_title">UI设计</text>
-								<text class="live_describe_content">科技性素材设计方法</text>
-							</view>
-						</view>
-						<view class="course_live_item_text text_overflow">【公开课】2020年UI设计之路</view>
-					</navigator>
-					<navigator class="course_live_item" url="">
-						<view class="course_live_item_img">
-							<image src="../../static/images/live-background-img.png" mode="widthFix"></image>
-							<view class="icon_live"></view>
-							<view class="live_describe">
-								<text class="live_describe_title">UI设计</text>
-								<text class="live_describe_content">科技性素材设计方法</text>
-							</view>
-						</view>
-						<view class="course_live_item_text text_overflow">【公开课】2020年UI设计之路</view>
+					<navigator v-for="(item, index) in courseLives" class="course_live_item" :url="item.url" :key="item.id">
+						<course-live :liveInfo="item.liveInfo"></course-live>
 					</navigator>
 				</view>
 			</view>
@@ -76,37 +60,74 @@
 					</view>
 					<navigator class="course_header_more" url="">更多></navigator>
 				</view>
-				<view class="recommend_content">
-					<image class="recommend_content_img" src="../../static/images/Pr.png" mode="widthFix"></image>
-					<view class="recommend_content_right">
-						<view>
-							<view class="recommend_content_right_title">
-								零基础入门Premiere
-							</view>
-							<view class="recommend_content_right_describe text_overflow">
-								全年爆款，快速提升软件能力，从此不加班
-							</view>
-						</view>
-						<view class="recommend_content_right_info">
-							<view class="author_info">
-								<image class="author_icon" src="../../static/images/author-icon.png" mode="widthFix"></image>
-								<text class="author">小米老师</text>
-							</view>
-							<view class="price">￥324</view>
-						</view>
-					</view>
-				</view>
+				<navigator v-for="(item, index) in courseItems" :url="item.url" :key="item.id">
+					<course-item :courseInfo="item.courseInfo"></course-item>
+				</navigator>
+			</view>
+			<view class="bottom">
+				
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	import courseLive from '../../components/course-live/course-live.vue'
+	import courseItem from '../../components/course-item/course-item.vue'
+
 	export default {
 		data() {
 			return {
-
+				courseLives: [{
+						id: 1,
+						url: '',
+						liveInfo: {
+							sort: 'PS',
+							describe: '学习PS',
+							title: '【公开课】2020年PS设计之路',
+							imageUrl: '../../static/images/live-background-img.png'
+						}
+					},
+					{
+						id: 2,
+						url: '',
+						liveInfo: {
+							sort: 'UI设计',
+							describe: '科技性素材设计方法',
+							title: '【公开课】2020年UI设计之路',
+							imageUrl: '../../static/images/live-background-img.png'
+						}
+					}
+				],
+				courseItems: [
+					{
+						id: 1,
+						url: '',
+						courseInfo: {
+							imgUrl: '../../static/images/Pr.png',
+							title: '零基础入门Premiere',
+							describe: '全年爆款，快速提升软件能力，从此不加班',
+							author: '小米老师',
+							price: '324'
+						}
+					},
+					{
+						id: 2,
+						url: '',
+						courseInfo: {
+							imgUrl: '../../static/images/Pr.png',
+							title: '零基础入门PS',
+							describe: '全年爆款，快速提升软件能力，从此不加班',
+							author: '小绵老师',
+							price: '300'
+						}
+					},
+				]
 			};
+		},
+		components: {
+			courseLive,
+			courseItem
 		}
 	}
 </script>
@@ -127,19 +148,23 @@
 				text-align: center;
 			}
 
-			.header_search_input {
+			.header_search {
 				width: 75%;
-				height: 54rpx;
-				background-color: #f5f5f5;
-				border: 1px solid #f5f5f5;
-				border-radius: 10px;
+				
+				.header_search_input {
+					width: 100%;
+					height: 54rpx;
+					padding-left: 56rpx;
+					background-color: #f5f5f5;
+					border: 1px solid #f5f5f5;
+					border-radius: 10px;
+				}
 			}
 		}
 
 		.banner {
 			position: relative;
 			width: 100%;
-			// height: 287rpx;
 			margin-bottom: 92rpx;
 
 			.banner_img {
@@ -155,7 +180,6 @@
 				left: 3.6%;
 				right: 3.6%;
 				bottom: -70rpx;
-				// height: 126rpx;
 				padding: 16rpx 0;
 				background-color: #FFFFFF;
 				border-radius: 5px;
@@ -170,7 +194,6 @@
 					image {
 						width: 37.93%;
 						margin-bottom: 8rpx;
-						// height: 66rpx;
 					}
 
 					.nav_item_title {
@@ -243,129 +266,15 @@
 
 					.course_live_item {
 						width: 47.98%;
-
-						.course_live_item_img {
-							position: relative;
-							width: 100%;
-							// height: 160rpx;
-
-							image {
-								width: 100%;
-								height: 100%;
-							}
-
-							.icon_live {
-								position: absolute;
-								top: 50%;
-								left: 50%;
-								transform: translate(-12px, -12px);
-								width: 24px;
-								height: 24px;
-								background: url('../../static/images/icon-live.gif');
-							}
-
-							.live_describe {
-								position: absolute;
-								left: 16rpx;
-								bottom: 10%;
-								color: #FFFFFF;
-								font-size: 10px;
-
-								.live_describe_title {
-									margin-right: 4px;
-									padding: 2rpx 6rpx;
-									background: #a163f0;
-									border-radius: 10px;
-								}
-							}
-							
-							@media screen and (min-width:768px) {
-								.live_describe {
-									font-size: 14px;
-								}
-							}
-						}
-
-						.course_live_item_text {
-							width: 100%;
-							font-size: 12px;
-						}
-						@media screen and (min-width:768px) {
-							.course_live_item_text {
-								width: 100%;
-								font-size: 16px;
-							}
-						}
 					}
 				}
 			}
-
-			.recommend {
-
-				.recommend_content {
-					display: flex;
-
-					.recommend_content_img {
-						width: 43.96%;
-					}
-
-					.recommend_content_right {
-						width: 56.04%;
-						display: flex;
-						flex-direction: column;
-						justify-content: space-between;
-						padding: 20rpx 16rpx 8rpx;
-
-						.recommend_content_right_title {
-							font-size: 14px;
-						}
-
-						@media screen and (min-width:768px) {
-							.recommend_content_right_title {
-								font-size: 20px;
-							}
-						}
-
-						.recommend_content_right_describe {
-							width: 100%;
-							font-size: 10px;
-							color: #999999;
-						}
-
-						@media screen and (min-width:768px) {
-							.recommend_content_right_describe {
-								width: 100%;
-								font-size: 14px;
-							}
-						}
-
-						.recommend_content_right_info {
-							display: flex;
-							justify-content: space-between;
-							align-items: center;
-
-							.author_info {
-								display: flex;
-								align-items: center;
-
-								.author_icon {
-									width: 20px;
-									margin-right: 8rpx;
-								}
-
-								.author {
-									font-size: 10px;
-								}
-							}
-
-							.price {
-								font-size: 14px;
-								color: #fc4e0a;
-							}
-						}
-					}
-				}
-			}
+		}
+		
+		.bottom {
+			/* #ifdef H5 */
+			height: calc(20px + var(--window-bottom));
+			/* #endif */
 		}
 	}
 </style>
