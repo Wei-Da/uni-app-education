@@ -6,7 +6,7 @@
 				<view class="recommend_content_right_title">
 					{{ courseInfo.title }}
 				</view>
-				<view class="recommend_content_right_describe text_overflow">
+				<view class="recommend_content_right_describe text-ellipsis">
 					{{ courseInfo.describe }}
 				</view>
 			</view>

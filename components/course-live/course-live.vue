@@ -8,7 +8,7 @@
 				<text class="live_describe_content">{{ liveInfo.describe }}</text>
 			</view>
 		</view>
-		<view class="course_live_item_text text_overflow">{{ liveInfo.title }}</view>
+		<view class="course_live_item_text text-ellipsis">{{ liveInfo.title }}</view>
 	</view>
 </template>
 

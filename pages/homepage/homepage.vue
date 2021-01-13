@@ -4,7 +4,7 @@
 			<view class="header_city">南京</view>
 			<view class="header_search">
 				<input class="header_search_input" confirm-type="search" placeholder="搜索课程老师等关键字" placeholder-style="color:#b3b3b3; font-size:22rpx;" />
-				<view class="icon-search"></view>
+				<icon class="icon_search" type="search" size="26rpx"></icon>
 			</view>
 		</view>
 		<view class="banner">
@@ -29,7 +29,7 @@
 			</view>
 		</view>
 		<view class="content-wrap">
-			<view class="card">
+			<view class="card line">
 				<navigator url="" class="card_item">
 					<image src="../../static/images/card-top-teacher.png" mode="widthFix"></image>
 				</navigator>
@@ -40,7 +40,7 @@
 					<image src="../../static/images/card-traning.png" mode="widthFix"></image>
 				</navigator>
 			</view>
-			<view class="course">
+			<view class="course line">
 				<view class="course_header">
 					<view class="course_header_title">
 						直播课程
@@ -64,9 +64,7 @@
 					<course-item :courseInfo="item.courseInfo"></course-item>
 				</navigator>
 			</view>
-			<view class="bottom">
-				
-			</view>
+			<view class="window-bottom"></view>
 		</view>
 	</view>
 </template>
@@ -141,7 +139,8 @@
 			justify-content: flex-start;
 			align-items: center;
 			width: 100%;
-			margin-bottom: 20rpx;
+			margin-top: 18px;
+			margin-bottom: 18px;
 
 			.header_city {
 				width: 20%;
@@ -149,6 +148,7 @@
 			}
 
 			.header_search {
+				position: relative;
 				width: 75%;
 				
 				.header_search_input {
@@ -158,6 +158,12 @@
 					background-color: #f5f5f5;
 					border: 1px solid #f5f5f5;
 					border-radius: 10px;
+				}
+				
+				.icon_search {
+					position: absolute;
+					top: 14rpx;
+					left: 24rpx;
 				}
 			}
 		}
@@ -183,6 +189,7 @@
 				padding: 16rpx 0;
 				background-color: #FFFFFF;
 				border-radius: 5px;
+				box-shadow: 0 10px 5px #F8F8F8;
 
 				.nav_item {
 					width: 25%;
@@ -210,11 +217,9 @@
 
 			.card {
 				display: flex;
+				flex-wrap: wrap;
 				justify-content: space-between;
 				width: 100%;
-				border-bottom: 15rpx solid #f5f5f5;
-				margin-bottom: 26rpx;
-				padding-bottom: 26rpx;
 
 				.card_item {
 					width: 31.89%;
@@ -225,39 +230,36 @@
 				}
 			}
 
-			.course_header {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin-bottom: 26rpx;
+			// .course_header {
+			// 	display: flex;
+			// 	justify-content: space-between;
+			// 	align-items: center;
+			// 	margin-bottom: 26rpx;
 
-				.course_header_title {
-					font-size: 16px;
-				}
+			// 	.course_header_title {
+			// 		font-size: 16px;
+			// 	}
 
-				@media screen and (min-width:768px) {
-					.course_header_title {
-						font-size: 22px;
-					}
-				}
+			// 	@media screen and (min-width:768px) {
+			// 		.course_header_title {
+			// 			font-size: 22px;
+			// 		}
+			// 	}
 
-				.course_header_more {
-					font-size: 10px;
-					color: #999999;
-				}
+			// 	.course_header_more {
+			// 		font-size: 10px;
+			// 		color: #999999;
+			// 	}
 
-				@media screen and (min-width:768px) {
-					.course_header_more {
-						font-size: 14px;
-					}
-				}
-			}
+			// 	@media screen and (min-width:768px) {
+			// 		.course_header_more {
+			// 			font-size: 14px;
+			// 		}
+			// 	}
+			// }
 
 			.course {
 				width: 100%;
-				border-bottom: 15rpx solid #f5f5f5;
-				margin-bottom: 26rpx;
-				padding-bottom: 26rpx;
 
 				.course_live {
 					width: 100%;
@@ -271,10 +273,5 @@
 			}
 		}
 		
-		.bottom {
-			/* #ifdef H5 */
-			height: calc(20px + var(--window-bottom));
-			/* #endif */
-		}
 	}
 </style>

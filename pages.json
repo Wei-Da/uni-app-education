@@ -36,6 +36,7 @@
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#FFFFFF",
+		"autoscan":true,
 		"h5": {
 			"maxWidth": 600
 		}

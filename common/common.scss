@@ -1,0 +1,81 @@
+page {
+	font-size: 28rpx;
+	line-height: 1.5;
+	color: #2c3e50;
+	background: #fff;
+	-webkit-overflow-scrolling: touch; /*使iOS列表滑动流畅*/
+}
+
+page,
+view,
+input,
+text,
+form,
+navigator,
+rich-text,
+picker,
+scroll-view,
+cover-view,
+open-data {
+	box-sizing: border-box;
+}
+
+rich-text,
+open-data,
+form {
+	display: block;
+}
+
+cover-view {
+	line-height: 1.5;
+	white-space: normal;
+}
+
+/* 文本溢出隐藏 */
+.text-ellipsis {
+	overflow: hidden; 
+	white-space: nowrap; 
+	text-overflow: ellipsis;
+}
+
+// 分隔线
+.line::after {
+	content: '';
+	background: #f5f5f5;
+	display: block;
+	width: 100%;
+	max-width: 600px;
+	height: 14rpx;
+	margin: 26rpx 0;
+}
+
+.course_header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 26rpx;
+}
+
+.course_header .course_header_title {
+	font-size: 16px;
+}
+
+.course_header .course_header_more {
+	font-size: 10px;
+	color: #999999;
+}
+
+@media screen and (min-width:768px) {
+	.course_header .course_header_title {
+		font-size: 22px;
+	}
+	.course_header .course_header_more {
+		font-size: 14px;
+	}
+}
+
+.window-bottom {
+	/* #ifdef H5 */
+	height: calc(20px + var(--window-bottom));
+	/* #endif */
+}
