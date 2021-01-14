@@ -11,19 +11,19 @@
 			<image class="banner_img" src="../../static/images/banner.png" mode="widthFix"></image>
 			<view class="nav_list">
 				<navigator url="" class="nav_item">
-					<image src="../../static/images/nav_popular.png" mode="widthFix"></image>
+					<image src="../../static/images/nav-popular.png" mode="widthFix"></image>
 					<text class="nav_item_title">热门</text>
 				</navigator>
 				<navigator url="" class="nav_item">
-					<image src="../../static/images/nav_free.png" mode="widthFix"></image>
+					<image src="../../static/images/nav-free.png" mode="widthFix"></image>
 					<text class="nav_item_title">免费</text>
 				</navigator>
 				<navigator url="" class="nav_item">
-					<image src="../../static/images/nav_course.png" mode="widthFix"></image>
+					<image src="../../static/images/nav-course.png" mode="widthFix"></image>
 					<text class="nav_item_title">教程</text>
 				</navigator>
 				<navigator url="" class="nav_item">
-					<image src="../../static/images/nav_classify.png" mode="widthFix"></image>
+					<image src="../../static/images/nav-classify.png" mode="widthFix"></image>
 					<text class="nav_item_title">分类</text>
 				</navigator>
 			</view>

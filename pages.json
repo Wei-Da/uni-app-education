@@ -3,50 +3,51 @@
 		{
 			"path": "pages/homepage/homepage",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "首页",
 				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "pages/discover/discover",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "发现",
 				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "pages/study/study",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "学习",
 				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "pages/mine/mine",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "我的",
 				"enablePullDownRefresh": false
 			}
 
 		}
 	],
 	"globalStyle": {
-		"navigationStyle": "custom",
+		"navigationStyle": "default",
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#FFFFFF",
 		"autoscan":true,
 		"h5": {
-			"maxWidth": 600
+			"maxWidth": 600,
+			"navigationStyle": "custom"
 		}
 
 	},
 	"tabBar": {
-		"color": "#999999",
-		"selectedColor": "#5c2bbc2",
 		"backgroundColor": "#ffffff",
-		"borderStyle": "#cccccc",
+		"borderStyle": "black",
+		"selectedColor": "#5d2ec4",
+		"color": "#999999",
 		"list": [{
 			"pagePath": "pages/homepage/homepage",
 			"iconPath": "static/images/homepage-icon.png",
