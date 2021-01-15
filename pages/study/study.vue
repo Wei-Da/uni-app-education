@@ -1,5 +1,5 @@
 <template>
-	<view class="qiun-columns">
+	<view class="study">
 		<view class="qiun-charts">
 			<!--#ifdef MP-ALIPAY -->
 			<canvas canvas-id="canvasRing" id="canvasRing" class="charts" :style="{'width':cWidth*pixelRatio+'px','height':cHeight*pixelRatio+'px', 'transform': 'scale('+(1/pixelRatio)+')','margin-left':-cWidth*(pixelRatio-1)/2+'px','margin-top':-cHeight*(pixelRatio-1)/2+'px'}"></canvas>
@@ -7,6 +7,43 @@
 			<!--#ifndef MP-ALIPAY -->
 			<canvas canvas-id="canvasRing" id="canvasRing" class="charts"></canvas>
 			<!--#endif-->
+		</view>
+		<view class="content">
+			<view class="total_hours line">
+				<view class="total_hours_item division_line">
+					<image class="total_hours_item_img" src="../../static/images/total-study.png" mode="widthFix"></image>
+					<view>累计学习：40h</view>
+				</view>
+				<view class="total_hours_item">
+					<image class="total_hours_item_img" src="../../static/images/total-class-hour.png" mode="widthFix"></image>
+					<view>累计课时：20节</view>
+				</view>
+			</view>
+			<view class="course_header">
+				<view class="course_header_title">
+					今日直播课程
+				</view>
+				<navigator class="course_header_more" url="">更多></navigator>
+			</view>
+			<view class="course_live line">
+				<navigator v-for="(item, index) in courseLives" class="course_live_item" :url="item.url" :key="item.id">
+					<course-live :liveInfo="item.liveInfo"></course-live>
+				</navigator>
+			</view>
+			<view class="course_header">
+				<view class="course_header_title">
+					我的课程
+				</view>
+			</view>
+			<view class="tabs_course_list">
+				<view class="tabs_course_list_item" @click="changeLeftLength('0%')">UI</view>
+				<view class="tabs_course_list_item" @click="changeLeftLength('25%')">绘画</view>
+				<view class="tabs_course_list_item" @click="changeLeftLength('50%')">影视</view>
+				<view class="tabs_course_list_item" @click="changeLeftLength('75%')">摄影</view>
+			</view>
+			<view class="tabs_underline" :style="{left: this.leftLenght}">
+				<view style="" class="tabs_underline_content"></view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -19,10 +56,32 @@
 	export default {
 		data() {
 			return {
+				leftLenght: '0',
 				cWidth: '',
 				cHeight: '',
 				pixelRatio: 1,
-				textarea: ''
+				textarea: '',
+				courseLives: [{
+						id: 1,
+						url: '',
+						liveInfo: {
+							sort: 'PS',
+							describe: '学习PS',
+							title: '【公开课】2020年PS设计之路',
+							imageUrl: '../../static/images/live-background-img.png'
+						}
+					},
+					{
+						id: 2,
+						url: '',
+						liveInfo: {
+							sort: 'UI设计',
+							describe: '科技性素材设计方法',
+							title: '【公开课】2020年UI设计之路',
+							imageUrl: '../../static/images/live-background-img.png'
+						}
+					}
+				],
 			}
 		},
 		onShareAppMessage() {
@@ -45,7 +104,7 @@
 				}
 			});
 			//#endif
-			
+
 			// 仅出现在 H5 平台下的代码
 			//#ifdef H5
 			uni.getSystemInfo({
@@ -53,7 +112,7 @@
 					console.log('pixelRatio: ', this.pixelRatio);
 					console.log(res.screenWidth);
 					console.log(res.windowWidth)
-					if(res.screenWidth >= 768) {
+					if (res.screenWidth >= 768) {
 						this.cWidth = 600;
 					} else {
 						this.cWidth = uni.upx2px(750);
@@ -67,7 +126,7 @@
 			this.cWidth = uni.upx2px(750);
 			//#endif
 
-			this.cHeight = uni.upx2px(500);
+			this.cHeight = uni.upx2px(400);
 			let ring = {
 				"series": [{
 					"name": "今日学习",
@@ -129,22 +188,92 @@
 						return item.name + ':' + item.data
 					}
 				});
+			},
+			changeLeftLength(length) {
+				this.leftLenght = length;
 			}
 		}
 	}
 </script>
 
-<style>
-	/*样式的width和height一定要与定义的cWidth和cHeight相对应*/
-	.qiun-charts {
-		width: 750upx;
-		height: 500upx;
-		background-color: #FFFFFF;
-	}
+<style lang="scss" scoped>
+	.study {
+		position: relative;
 
-	.charts {
-		width: 750upx;
-		height: 500upx;
-		background-color: #FFFFFF;
+		/*样式的width和height一定要与定义的cWidth和cHeight相对应*/
+		.qiun-charts {
+			width: 750upx;
+			height: 400rpx;
+			background-color: #FFFFFF;
+
+			.charts {
+				width: 750upx;
+				height: 400rpx;
+				background-color: #FFFFFF;
+			}
+		}
+
+		.content {
+			position: absolute;
+			left: 3.6%;
+			right: 3.6%;
+
+			.total_hours {
+				display: flex;
+				flex-wrap: wrap;
+				width: 100%;
+
+				.total_hours_item {
+					text-align: center;
+					width: 50%;
+
+					.total_hours_item_img {
+						width: 28px;
+						height: 28px;
+					}
+				}
+
+				.division_line {
+					border-right: 1px solid #dbdbdb;
+				}
+			}
+
+			.course_live {
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+
+				.course_live_item {
+					width: 47.98%;
+				}
+			}
+
+			.tabs_course_list {
+				width: 100%;
+				display: flex;
+				// justify-content: space-around;
+				// position: relative;
+
+				.tabs_course_list_item {
+					width: 25%;
+					text-align: center;
+
+				}
+			}
+			
+			.tabs_underline {
+				position: absolute;
+				width: 25%;
+				transition: all 300ms;
+				
+				.tabs_underline_content {
+					height: 5px;
+					width: 26px;
+					margin: 0 auto;
+					background: #5f2ec5;
+				}
+			}
+		}
 	}
 </style>
