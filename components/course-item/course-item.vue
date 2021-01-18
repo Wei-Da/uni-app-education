@@ -11,10 +11,7 @@
 				</view>
 			</view>
 			<view class="recommend_content_right_info">
-				<view class="author_info">
-					<image class="author_icon" src="../../static/images/author-icon.png" mode="widthFix"></image>
-					<text class="author">{{ courseInfo.author }}</text>
-				</view>
+				<icon-author :author="courseInfo.author" :authorImg="courseInfo.authorImg"></icon-author>
 				<view class="price">￥{{ courseInfo.price }}</view>
 			</view>
 		</view>
@@ -73,20 +70,7 @@
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-
-				.author_info {
-					display: flex;
-					align-items: center;
-
-					.author_icon {
-						width: 20px;
-						margin-right: 8rpx;
-					}
-
-					.author {
-						font-size: 10px;
-					}
-				}
+				height: 40rpx;
 
 				.price {
 					font-size: 14px;

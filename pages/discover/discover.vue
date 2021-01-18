@@ -55,6 +55,7 @@
 							title: 'UI运营设计训练营（第1期）',
 							describe: '全年爆款，快速提升软件能力，从此不加班',
 							author: '绵绵羊',
+							authorImg: '../../static/images/author-icon.png',
 							price: '245'
 						}
 					},
@@ -66,6 +67,7 @@
 							title: 'UI运营设计训练营（第1期）',
 							describe: '全年爆款，快速提升软件能力，从此不加班',
 							author: '小绵老师',
+							authorImg: '../../static/images/author-icon.png',
 							price: '300'
 						}
 					},

@@ -36,14 +36,24 @@
 				</view>
 			</view>
 			<view class="tabs_course_list">
-				<view class="tabs_course_list_item" @click="changeLeftLength('0%')">UI</view>
-				<view class="tabs_course_list_item" @click="changeLeftLength('25%')">绘画</view>
-				<view class="tabs_course_list_item" @click="changeLeftLength('50%')">影视</view>
-				<view class="tabs_course_list_item" @click="changeLeftLength('75%')">摄影</view>
+				<view class="tabs_course_list_item" @click="changeLeftLength(0, '0%')">UI</view>
+				<view class="tabs_course_list_item" @click="changeLeftLength(1, '25%')">绘画</view>
+				<view class="tabs_course_list_item" @click="changeLeftLength(2, '50%')">影视</view>
+				<view class="tabs_course_list_item" @click="changeLeftLength(3, '75%')">摄影</view>
 			</view>
 			<view class="tabs_underline" :style="{left: this.leftLenght}">
 				<view style="" class="tabs_underline_content"></view>
 			</view>
+			<view style="width: 100%; height: 40rpx;">
+				
+			</view>
+			<view class="my-course">
+				<my-course v-show="tabIndex === 0" class="my-course_item" v-for="(item, index) in myUICourse" :key="item.id" :courseInfo="item"></my-course>
+				<my-course v-show="tabIndex === 1" class="my-course_item" v-for="(item, index) in myPaintCourse" :key="item.id" :courseInfo="item"></my-course>
+				<my-course v-show="tabIndex === 2" class="my-course_item" v-for="(item, index) in myFilmCourse" :key="item.id" :courseInfo="item"></my-course>
+				<my-course v-show="tabIndex === 3" class="my-course_item" v-for="(item, index) in myPhotoCourse" :key="item.id" :courseInfo="item"></my-course>
+			</view>
+			<view class="window-bottom"></view>
 		</view>
 	</view>
 </template>
@@ -61,8 +71,9 @@
 				cHeight: '',
 				pixelRatio: 1,
 				textarea: '',
+				tabIndex: 0,
 				courseLives: [{
-						id: 1,
+						id: 13424,
 						url: '',
 						liveInfo: {
 							sort: 'PS',
@@ -72,7 +83,7 @@
 						}
 					},
 					{
-						id: 2,
+						id: 245353,
 						url: '',
 						liveInfo: {
 							sort: 'UI设计',
@@ -82,6 +93,69 @@
 						}
 					}
 				],
+				myUICourse: [
+					{
+						id: 213213,
+						imgSrc: '../../static/images/ui-course-cyan.png',
+						title: 'UI运营设计训练营（第1期）第一节',
+						author: '绵绵羊',
+						authorImg: '../../static/images/author-icon.png',
+						attendance: '已出勤'
+					},
+					{
+						id: 3425423,
+						imgSrc: '../../static/images/Pr.png',
+						title: '零基础入门Premiere',
+						author: '绵绵羊',
+						authorImg: '../../static/images/author-icon.png',
+						attendance: '未出勤'
+					},
+					{
+						id: 5456,
+						imgSrc: '../../static/images/Pr.png',
+						title: '零基础入门Premiere',
+						author: '绵绵羊',
+						authorImg: '../../static/images/author-icon.png',
+						attendance: '未出勤'
+					},
+					{
+						id: 45345,
+						imgSrc: '../../static/images/ui-course-blue.png',
+						title: '零基础入门UI设计',
+						author: '绵绵羊',
+						authorImg: '../../static/images/author-icon.png',
+						attendance: '已出勤'
+					},
+				],
+				myPaintCourse: [
+					{
+						id: 3423432,
+						imgSrc: '../../static/images/ui-course-cyan.png',
+						title: 'UI运营设计训练营（第1期）第一节',
+						author: '绵绵羊',
+						authorImg: '../../static/images/author-icon.png',
+						attendance: '已出勤'
+					},
+					{
+						id: 8790,
+						imgSrc: '../../static/images/Pr.png',
+						title: '零基础入门Premiere',
+						author: '绵绵羊',
+						authorImg: '../../static/images/author-icon.png',
+						attendance: '未出勤'
+					}
+				],
+				myFilmCourse: [
+					{
+						id: 45436456,
+						imgSrc: '../../static/images/Pr.png',
+						title: '零基础入门Premiere',
+						author: '绵绵羊',
+						authorImg: '../../static/images/author-icon.png',
+						attendance: '未出勤'
+					}
+				],
+				myPhotoCourse: []
 			}
 		},
 		onShareAppMessage() {
@@ -189,7 +263,8 @@
 					}
 				});
 			},
-			changeLeftLength(length) {
+			changeLeftLength(index, length) {
+				this.tabIndex = index
 				this.leftLenght = length;
 			}
 		}
@@ -272,6 +347,18 @@
 					width: 26px;
 					margin: 0 auto;
 					background: #5f2ec5;
+				}
+			}
+			
+			.my-course {
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				width: 100%;
+				
+				.my-course_item {
+					width: 48%;
+					margin-bottom: 12rpx;
 				}
 			}
 		}

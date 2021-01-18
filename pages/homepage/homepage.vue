@@ -106,7 +106,8 @@
 							title: '零基础入门Premiere',
 							describe: '全年爆款，快速提升软件能力，从此不加班',
 							author: '小米老师',
-							price: '324'
+							price: '324',
+							authorImg: '../../static/images/author-icon.png'
 						}
 					},
 					{
@@ -117,7 +118,8 @@
 							title: '零基础入门PS',
 							describe: '全年爆款，快速提升软件能力，从此不加班',
 							author: '小绵老师',
-							price: '300'
+							price: '300',
+							authorImg: '../../static/images/author-icon.png'
 						}
 					},
 				]
