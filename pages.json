@@ -28,6 +28,13 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/sort/sort",
+			"style": {
+				"navigationBarTitleText": "分类",
+				"enablePullDownRefresh": false
+			}
+
 		}
 	],
 	"globalStyle": {
@@ -36,7 +43,7 @@
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#f5f5f5",
-		"autoscan":true,
+		"autoscan": true,
 		"h5": {
 			"maxWidth": 600,
 			"navigationStyle": "custom"

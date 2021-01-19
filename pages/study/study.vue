@@ -41,7 +41,7 @@
 				<view class="tabs_course_list_item" @click="changeLeftLength(2, '50%')">影视</view>
 				<view class="tabs_course_list_item" @click="changeLeftLength(3, '75%')">摄影</view>
 			</view>
-			<view class="tabs_underline" :style="{left: this.leftLenght}">
+			<view class="tabs_underline" :style="{left: leftLenght}">
 				<view style="" class="tabs_underline_content"></view>
 			</view>
 			<view style="width: 100%; height: 40rpx;">

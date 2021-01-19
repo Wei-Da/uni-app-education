@@ -22,7 +22,7 @@
 					<image src="../../static/images/nav-course.png" mode="widthFix"></image>
 					<text class="nav_item_title">教程</text>
 				</navigator>
-				<navigator url="" class="nav_item">
+				<navigator url="../sort/sort" class="nav_item">
 					<image src="../../static/images/nav-classify.png" mode="widthFix"></image>
 					<text class="nav_item_title">分类</text>
 				</navigator>

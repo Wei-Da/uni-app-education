@@ -1,6 +1,6 @@
 <template>
 	<view class="my-course">
-		<image :src="courseInfo.imgSrc" mode="widthFix"></image>
+		<image class="my-course_img" :src="courseInfo.imgSrc" mode="widthFix"></image>
 		<view class="my-course-content">
 			<view class="my-course-content_title text-ellipsis">
 				{{ courseInfo.title }}
@@ -25,6 +25,10 @@
 	.my-course {
 		width: 100%;
 		border: 1px solid #e6e7ea;
+		
+		.my-course_img {
+			width: 100%;
+		}
 		
 		.my-course-content {
 			width: 100%;
