@@ -30,7 +30,7 @@
 		</view>
 		<view class="content-wrap">
 			<view class="card line">
-				<navigator url="" class="card_item">
+				<navigator url="../star-teacher/star-teacher" class="card_item">
 					<image src="../../static/images/card-top-teacher.png" mode="widthFix"></image>
 				</navigator>
 				<navigator url="" class="card_item">

@@ -24,7 +24,7 @@
 					<view class="">
 						玩转炫酷素材设计方法总结
 					</view>
-					<image class="daily_learn_video_views" src="../../static/images/video-views.png" mode="widthFix"></image>
+					<image class="daily_learn_video_views" src="../../static/images/icon-video-views.png" mode="widthFix"></image>
 					<text class="daily_learn_video_viewsNum">623</text>
 				</view>
 			</navigator>

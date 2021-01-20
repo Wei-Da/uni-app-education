@@ -17,15 +17,17 @@
 				<view style="" class="tabs_underline_content"></view>
 			</view>
 		</view>
-		<view class="sort-odds">
-			<text :class="{'odd-active' : oddIndex === 0}" class="odd-item" @click="changeOdd(0)">综合排序</text>
-			<text :class="{'odd-active' : oddIndex === 1}" class="odd-item" @click="changeOdd(1)">热度</text>
-			<text :class="{'odd-active' : oddIndex === 2}" class="odd-item" @click="changeOdd(2)">销量</text>
-			<text :class="{'odd-active' : oddIndex === 3}" class="odd-item" @click="changeOdd(3)">价格</text>
+		<view class="sort-content">
+			<view class="sort-odds">
+				<text :class="{'odd-active' : oddIndex === 0}" class="odd-item" @click="changeOdd(0)">综合排序</text>
+				<text :class="{'odd-active' : oddIndex === 1}" class="odd-item" @click="changeOdd(1)">热度</text>
+				<text :class="{'odd-active' : oddIndex === 2}" class="odd-item" @click="changeOdd(2)">销量</text>
+				<text :class="{'odd-active' : oddIndex === 3}" class="odd-item" @click="changeOdd(3)">价格</text>
+			</view>
+			<navigator v-for="(item, index) in courseItems" :url="item.url" :key="item.id">
+				<course-item :courseInfo="item.courseInfo"></course-item>
+			</navigator>
 		</view>
-		<navigator v-for="(item, index) in courseItems" :url="item.url" :key="item.id">
-			<course-item :courseInfo="item.courseInfo"></course-item>
-		</navigator>
 	</view>
 </template>
 
@@ -41,8 +43,7 @@
 				tabIndex: 0,
 				oddIndex: 0,
 				leftLenght: '0%',
-				courseItems: [
-					{
+				courseItems: [{
 						id: 1,
 						url: '',
 						courseInfo: {
@@ -142,18 +143,24 @@
 			}
 		}
 
-		.sort-odds {
-			display: flex;
-			justify-content: space-between;
-			margin-bottom: 26rpx;
-			
-			.odd-item {
-				width: 25%;
-				text-align: center;
-			}
-			
-			.odd-active {
-				color: #5f2ec5;
+		.sort-content {
+			position: absolute;
+			left: 3.6%;
+			right: 3.6%;
+
+			.sort-odds {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 26rpx;
+
+				.odd-item {
+					width: 25%;
+					text-align: center;
+				}
+
+				.odd-active {
+					color: #5f2ec5;
+				}
 			}
 		}
 	}

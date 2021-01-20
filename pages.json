@@ -35,6 +35,13 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/star-teacher/star-teacher",
+			"style": {
+				"navigationBarTitleText": "明星老师",
+				"enablePullDownRefresh": false
+			}
+
 		}
 	],
 	"globalStyle": {
