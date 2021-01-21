@@ -1,12 +1,6 @@
 <template>
 	<view class="discover">
-		<view class="header">
-			<view class="header_city">南京</view>
-			<view class="header_search">
-				<input class="header_search_input" confirm-type="search" placeholder="搜索课程老师等关键字" placeholder-style="color:#b3b3b3; font-size:22rpx;" />
-				<icon class="icon_search" type="search" size="26rpx"></icon>
-			</view>
-		</view>
+		<search class="h-100"></search>
 		<view class="discover_content">
 			<view class="line">
 				<image class="discover_banner" src="../../static/images/discover-banner.png" mode="widthFix"></image>
@@ -81,40 +75,6 @@
 	.discover {
 		position: relative;
 
-		.header {
-			display: flex;
-			justify-content: flex-start;
-			align-items: center;
-			width: 100%;
-			margin-top: 18px;
-			margin-bottom: 18px;
-
-			.header_city {
-				width: 20%;
-				text-align: center;
-			}
-
-			.header_search {
-				position: relative;
-				width: 75%;
-
-				.header_search_input {
-					width: 100%;
-					height: 54rpx;
-					padding-left: 56rpx;
-					background-color: #f5f5f5;
-					border: 1px solid #f5f5f5;
-					border-radius: 10px;
-				}
-
-				.icon_search {
-					position: absolute;
-					top: 14rpx;
-					left: 24rpx;
-				}
-			}
-		}
-
 		.discover_content {
 			position: absolute;
 			left: 3.6%;
@@ -127,6 +87,7 @@
 			.daily_learn {
 				position: relative;
 				width: 100%;
+				height: 100%;
 				
 				.daily_learn_img {
 					width: 100%;
@@ -147,9 +108,16 @@
 					align-items: center;
 					
 					.daily_learn_video_views {
-						width: 22px;
-						height: 18px;
+						width: 22rpx;
+						height: 18rpx;
 						margin-left: auto;
+					}
+					
+					@media screen and (min-width:768px) {
+						.daily_learn_video_views {
+							width: 22px;
+							height: 18px;
+						}
 					}
 					
 					.daily_learn_video_viewsNum {

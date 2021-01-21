@@ -25,6 +25,10 @@
 			size: {
 				type: [Number, String],
 				default: 16
+			},
+			customIcons: {
+				type: String,
+				default: ''
 			}
 		},
 		data() {
