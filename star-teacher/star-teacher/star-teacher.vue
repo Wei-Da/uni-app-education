@@ -13,7 +13,7 @@
 				<view class="star-teacher-follow-item" v-for="(item, index) in starTeacherList" :key="index">
 					<image class="star-teacher-follow-bg" :src="item.bgSrc" mode="widthFix"></image>
 					<view class="content">
-						<view class="star-teacher-follow-title text-ellipsis fs-18">
+						<view class="star-teacher-follow-title text-ellipsis">
 							{{ item.teacherName }}
 						</view>
 						<view class="star-teacher-follow-describe text-ellipsis">
@@ -21,7 +21,7 @@
 						</view>
 						<image class="star-teacher-follow-avatar w-56" :src="item.avatarSrc" mode="widthFix"></image>
 						<view class="star-teacher-follow-btn">
-							<image class="star-teacher-follow-btn-img w-16" src="../../static/images/icon-starTeacher-follow.png" mode="widthFix"></image>
+							<image class="star-teacher-follow-btn-img w-16" src="../static/images/icon-starTeacher-follow.png" mode="widthFix"></image>
 							<text class="star-teacher-follow-btn-text fs-14">关注</text>
 						</view>
 					</view>
@@ -47,24 +47,23 @@
 	export default {
 		data() {
 			return {
-				starTeacherList: [
-					{
+				starTeacherList: [{
 						teacherName: '柚子老师',
 						motto: '坚持自己的选择永不言弃',
-						bgSrc: '../../static/images/bg-starTeacher-blue.png',
-						avatarSrc: '../../static/images/icon-starTeahcer-blue.png'
+						bgSrc: '../static/images/bg-starTeacher-blue.png',
+						avatarSrc: '../static/images/icon-starTeahcer-blue.png'
 					},
 					{
 						teacherName: '柚子老师',
 						motto: '坚持自己的选择永不言弃',
-						bgSrc: '../../static/images/bg-starTeacher-red.png',
-						avatarSrc: '../../static/images/icon-starTeacher-red.png'
+						bgSrc: '../static/images/bg-starTeacher-red.png',
+						avatarSrc: '../static/images/icon-starTeacher-red.png'
 					},
 					{
 						teacherName: '柚子老师',
 						motto: '坚持自己的选择永不言弃',
-						bgSrc: '../../static/images/bg-starTeacher-yellow.png',
-						avatarSrc: '../../static/images/icon-starTeacher-yellow.png',
+						bgSrc: '../static/images/bg-starTeacher-yellow.png',
+						avatarSrc: '../static/images/icon-starTeacher-yellow.png',
 					},
 				]
 			};
@@ -104,8 +103,12 @@
 					width: 32%;
 					text-align: center;
 					color: #FFFFFF;
-					
+
 					.content {
+						display: flex;
+						flex-direction: column;
+						justify-content: space-between;
+						align-items: center;
 						padding: 24rpx 0;
 						position: absolute;
 						top: 0;
@@ -113,39 +116,39 @@
 						width: 100%;
 						height: 100%;
 					}
-					
+
 					.star-teacher-follow-bg {
 						width: 100%;
 					}
 
 					.star-teacher-follow-title {
+						font-size: 12px;
 						width: 100%;
 					}
-					
+
 					.star-teacher-follow-describe {
-						margin-top: 14rpx;
 						width: 100%;
 						font-size: 16rpx;
 					}
-					
-					@media screen and (min-width:768px) {
-						.star-teacher-follow-describe {
-							font-size: 28rpx;
-						}
-					}
-					
-					.star-teacher-follow-avatar {
-						margin-top: 18rpx;
-					}
-					
+
+					// @media screen and (min-width:768px) {
+					// 	.star-teacher-follow-describe {
+					// 		font-size: 28rpx;
+					// 	}
+					// }
+
+					// .star-teacher-follow-avatar {
+					// 	margin-top: 18rpx;
+					// }
+
 					.star-teacher-follow-btn {
 						width: 100%;
-						
+
 						.star-teacher-follow-btn-img {
 							vertical-align: middle;
 							margin-right: 6rpx;
 						}
-						
+
 						.star-teacher-follow-btn-text {
 							vertical-align: middle;
 						}

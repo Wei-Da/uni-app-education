@@ -16,7 +16,7 @@
 					<image src="../../static/images/nav-course.png" mode="widthFix"></image>
 					<text class="nav_item_title">教程</text>
 				</navigator>
-				<navigator url="../sort/sort" class="nav_item">
+				<navigator url="../../course-list/course-list/course-list" class="nav_item">
 					<image src="../../static/images/nav-classify.png" mode="widthFix"></image>
 					<text class="nav_item_title">分类</text>
 				</navigator>
@@ -24,7 +24,7 @@
 		</view>
 		<view class="content-wrap">
 			<view class="card line">
-				<navigator url="../star-teacher/star-teacher" class="card_item">
+				<navigator url="../../star-teacher/star-teacher/star-teacher" class="card_item">
 					<image src="../../static/images/card-top-teacher.png" mode="widthFix"></image>
 				</navigator>
 				<navigator url="" class="card_item">
@@ -94,7 +94,7 @@
 				courseItems: [
 					{
 						id: 1,
-						url: '',
+						url: '../../course-details/course-details/course-details',
 						courseInfo: {
 							imgUrl: '../../static/images/Pr.png',
 							title: '零基础入门Premiere',

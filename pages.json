@@ -28,22 +28,50 @@
 				"enablePullDownRefresh": false
 			}
 
-		}, {
-			"path": "pages/sort/sort",
-			"style": {
-				"navigationBarTitleText": "分类",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
-			"path": "pages/star-teacher/star-teacher",
+		}
+	],
+	"subPackages": [{
+		"root": "star-teacher",
+		"pages": [{
+			"path": "star-teacher/star-teacher",
 			"style": {
 				"navigationBarTitleText": "明星老师",
 				"enablePullDownRefresh": false
 			}
-
+		}]
+	}, {
+		"root": "course-list",
+		"pages": [{
+			"path": "course-list/course-list",
+			"style": {
+				"navigationBarTitleText": "分类",
+				"enablePullDownRefresh": false
+			}
+		}]
+	}, {
+		"root": "course-details",
+		"pages": [{
+			"path": "course-details/course-details",
+			"style": {
+				"navigationBarTitleText": "课程详情",
+				"enablePullDownRefresh": false
+			}
+		}]
+	}],
+	"preloadRule": {
+		"star-teacher/star-teacher/star-teacher": {
+			"network": "all",
+			"packages": ["__APP__"]
+		},
+		"course-list/course-list/course-list": {
+			"network": "all",
+			"packages": ["__APP__"]
+		},
+		"course-details/course-details/course-details": {
+			"network": "all",
+			"packages": ["__APP__"]
 		}
-	],
+	},
 	"globalStyle": {
 		"navigationStyle": "default",
 		"navigationBarTextStyle": "black",
