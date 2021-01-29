@@ -5,11 +5,11 @@
 		<!-- #endif -->
 		<view class="sort-tabs">
 			<view class="sort-tabs-list">
-				<view class="sort-tabs-list-item" @click="changeLeftLength(0, '0%')">UI</view>
-				<view class="sort-tabs-list-item" @click="changeLeftLength(1, '14%')">绘画</view>
+				<view class="sort-tabs-list-item" @click="changeLeftLength(0, '0%', 'ui')">UI</view>
+				<view class="sort-tabs-list-item" @click="changeLeftLength(1, '14%', 'design')">设计</view>
 				<view class="sort-tabs-list-item" @click="changeLeftLength(2, '28%')">前端</view>
 				<view class="sort-tabs-list-item" @click="changeLeftLength(3, '42%')">后台</view>
-				<view class="sort-tabs-list-item" @click="changeLeftLength(4, '56%')">影视</view>
+				<view class="sort-tabs-list-item" @click="changeLeftLength(4, '56%', 'film')">影视</view>
 				<view class="sort-tabs-list-item" @click="changeLeftLength(5, '70%')">摄影</view>
 				<view class="sort-tabs-list-item" @click="changeLeftLength(6, '84%')">架构</view>
 			</view>
@@ -24,8 +24,8 @@
 				<text :class="{'odd-active' : oddIndex === 2}" class="odd-item" @click="changeOdd(2)">销量</text>
 				<text :class="{'odd-active' : oddIndex === 3}" class="odd-item" @click="changeOdd(3)">价格</text>
 			</view>
-			<navigator v-for="(item, index) in courseItems" :url="item.url" :key="item.id">
-				<course-item :courseInfo="item.courseInfo"></course-item>
+			<navigator v-for="item in courseList" :key="item._id">
+				<course-item :courseInfo="item"></course-item>
 			</navigator>
 		</view>
 	</view>
@@ -33,6 +33,9 @@
 
 <script>
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
+	import {
+		getCourseByType
+	} from '@/api/course.js';
 
 	export default {
 		components: {
@@ -91,8 +94,12 @@
 							price: '300'
 						}
 					},
-				]
+				],
+				courseList: []
 			}
+		},
+		onLoad() {
+			this.getCourseList('ui')
 		},
 		methods: {
 			goBack() {
@@ -100,12 +107,21 @@
 					delta: 1
 				})
 			},
-			changeLeftLength(index, length) {
+			changeLeftLength(index, length, type) {
 				this.tabIndex = index
 				this.leftLenght = length;
+				this.getCourseList(type)
 			},
 			changeOdd(index) {
 				this.oddIndex = index;
+			},
+			getCourseList(type) {
+				getCourseByType({
+					type
+				}).then((res) => {
+					this.courseList = res.data
+					console.log("courseList: ", this.courseList)
+				})
 			}
 		}
 	}

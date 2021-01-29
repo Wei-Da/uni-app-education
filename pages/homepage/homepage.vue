@@ -64,8 +64,9 @@
 </template>
 
 <script>
-	import courseLive from '../../components/course-live/course-live.vue'
-	import courseItem from '../../components/course-item/course-item.vue'
+	import { getCourse } from '@/api/course.js';
+	// import courseLive from '../../components/course-live/course-live.vue'
+	// import courseItem from '../../components/course-item/course-item.vue'
 
 	export default {
 		data() {
@@ -119,9 +120,25 @@
 				]
 			};
 		},
-		components: {
-			courseLive,
-			courseItem
+		// components: {
+		// 	courseLive,
+		// 	courseItem
+		// },
+		onLoad() {
+			this.getList()
+		},
+		methods: {
+			getList() {
+				getCourse()
+					.then((res) => {
+						console.log('获取课程列表成功')
+						console.log(res)
+					})
+					.catch((err) => {
+						console.log('获取课程列表失败')
+						console.log(err)
+					})
+			}
 		}
 	}
 </script>
