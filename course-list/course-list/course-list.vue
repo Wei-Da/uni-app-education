@@ -20,9 +20,9 @@
 		<view class="sort-content">
 			<view class="sort-odds">
 				<text :class="{'odd-active' : oddIndex === 0}" class="odd-item" @click="changeOdd(0)">综合排序</text>
-				<text :class="{'odd-active' : oddIndex === 1}" class="odd-item" @click="changeOdd(1)">热度</text>
 				<text :class="{'odd-active' : oddIndex === 2}" class="odd-item" @click="changeOdd(2)">销量</text>
-				<text :class="{'odd-active' : oddIndex === 3}" class="odd-item" @click="changeOdd(3)">价格</text>
+				<text :class="{'odd-active' : oddIndex === 1}" class="odd-item" @click="changeOdd(1, 'date')">日期 {{ dateSortCode === 1 ? '↑' : '↓' }}</text>
+				<text :class="{'odd-active' : oddIndex === 3}" class="odd-item" @click="changeOdd(3, 'price')">价格 {{ priceSortCode === 1 ? '↑' : '↓' }}</text>
 			</view>
 			<navigator v-for="item in courseList" :key="item._id">
 				<course-item :courseInfo="item"></course-item>
@@ -46,60 +46,17 @@
 				tabIndex: 0,
 				oddIndex: 0,
 				leftLenght: '0%',
-				courseItems: [{
-						id: 1,
-						url: '',
-						courseInfo: {
-							imgUrl: '../../static/images/Pr.png',
-							title: '零基础入门Premiere',
-							describe: '全年爆款，快速提升软件能力，从此不加班',
-							author: '小米老师',
-							price: '324',
-							authorImg: '../../static/images/author-icon.png'
-						}
-					},
-					{
-						id: 2,
-						url: '',
-						courseInfo: {
-							imgUrl: '../../static/images/Pr.png',
-							title: '零基础入门PS',
-							describe: '全年爆款，快速提升软件能力，从此不加班',
-							author: '小绵老师',
-							price: '300',
-							authorImg: '../../static/images/author-icon.png'
-						}
-					},
-					{
-						id: 3,
-						url: '',
-						courseInfo: {
-							imgUrl: '../../static/images/ui-course-blue.png',
-							title: 'UI运营设计训练营（第1期）',
-							describe: '全年爆款，快速提升软件能力，从此不加班',
-							author: '绵绵羊',
-							authorImg: '../../static/images/author-icon.png',
-							price: '245'
-						}
-					},
-					{
-						id: 4,
-						url: '',
-						courseInfo: {
-							imgUrl: '../../static/images/ui-course-cyan.png',
-							title: 'UI运营设计训练营（第1期）',
-							describe: '全年爆款，快速提升软件能力，从此不加班',
-							author: '小绵老师',
-							authorImg: '../../static/images/author-icon.png',
-							price: '300'
-						}
-					},
-				],
-				courseList: []
+				courseList: [],
+				sortType: 'price',
+				priceSortCode: 1,
+				dateSortCode: 1,
+				type: 'ui'
 			}
 		},
 		onLoad() {
-			this.getCourseList('ui')
+			this.getCourseList({
+				type: this.type
+			})
 		},
 		methods: {
 			goBack() {
@@ -107,20 +64,51 @@
 					delta: 1
 				})
 			},
+
 			changeLeftLength(index, length, type) {
 				this.tabIndex = index
 				this.leftLenght = length;
-				this.getCourseList(type)
-			},
-			changeOdd(index) {
-				this.oddIndex = index;
-			},
-			getCourseList(type) {
-				getCourseByType({
+				this.type = type
+				this.getCourseList({
 					type
-				}).then((res) => {
-					this.courseList = res.data
-					console.log("courseList: ", this.courseList)
+				})
+			},
+
+			changeOdd(index, type) {
+				this.oddIndex = index;
+				this.sortType = type;
+				if(type === 'price') {
+					this.changePriceOdd()
+				} else if(type === 'date') {
+					this.changeDateOdd()
+				} else {
+					this.getCourseList({
+						type: this.type,
+					})
+				}
+			},
+
+			changePriceOdd() {
+				this.priceSortCode === 1 ? this.priceSortCode = -1 : this.priceSortCode = 1;
+				this.getCourseList({
+					type: this.type,
+					sortType: this.sortType,
+					sort: this.priceSortCode
+				})
+			},
+
+			changeDateOdd() {
+				this.dateSortCode === 1 ? this.dateSortCode = -1 : this.dateSortCode = 1;
+				this.getCourseList({
+					type: this.type,
+					sortType: this.sortType,
+					sort: this.dateSortCode
+				})
+			},
+
+			getCourseList(query) {
+				getCourseByType(query).then((res) => {
+					this.courseList = res.data;
 				})
 			}
 		}

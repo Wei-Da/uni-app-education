@@ -3,7 +3,7 @@
 		<image class="recommend_content_img" :src="courseInfo.imgUrl" mode="widthFix"></image>
 		<view class="recommend_content_right">
 			<view>
-				<view class="recommend_content_right_title">
+				<view class="recommend_content_right_title text-ellipsis">
 					{{ courseInfo.title }}
 				</view>
 				<view class="recommend_content_right_describe text-ellipsis">

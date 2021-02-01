@@ -28,8 +28,8 @@
 				</view>
 				<navigator class="course_header_more" url="">更多></navigator>
 			</view>
-			<navigator v-for="(item, index) in courseItems" :url="item.url" :key="item.id">
-				<course-item :courseInfo="item.courseInfo"></course-item>
+			<navigator v-for="item in courseList" :key="item._id">
+				<course-item :courseInfo="item"></course-item>
 			</navigator>
 		<view class="window-bottom"></view>
 		</view>
@@ -37,36 +37,23 @@
 </template>
 
 <script>
+	import { getCourse } from '@/api/course.js';
+	
 	export default {
+		onLoad() {
+			this.getCourseList()
+		},
 		data() {
 			return {
-				courseItems: [
-					{
-						id: 1,
-						url: '',
-						courseInfo: {
-							imgUrl: '../../static/images/ui-course-blue.png',
-							title: 'UI运营设计训练营（第1期）',
-							describe: '全年爆款，快速提升软件能力，从此不加班',
-							author: '绵绵羊',
-							authorImg: '../../static/images/author-icon.png',
-							price: '245'
-						}
-					},
-					{
-						id: 2,
-						url: '',
-						courseInfo: {
-							imgUrl: '../../static/images/ui-course-cyan.png',
-							title: 'UI运营设计训练营（第1期）',
-							describe: '全年爆款，快速提升软件能力，从此不加班',
-							author: '小绵老师',
-							authorImg: '../../static/images/author-icon.png',
-							price: '300'
-						}
-					},
-				]
+				courseList: []
 			};
+		},
+		methods: {
+			getCourseList() {
+				getCourse().then((res) => {
+					this.courseList = res.data;
+				})
+			}
 		}
 	}
 </script>

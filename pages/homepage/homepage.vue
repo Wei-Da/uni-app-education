@@ -4,15 +4,15 @@
 		<view class="banner">
 			<image class="banner_img" src="../../static/images/banner.png" mode="widthFix"></image>
 			<view class="nav_list">
-				<navigator url="" class="nav_item">
+				<navigator url="../../course-list/course-list/course-list" class="nav_item">
 					<image src="../../static/images/nav-popular.png" mode="widthFix"></image>
 					<text class="nav_item_title">热门</text>
 				</navigator>
-				<navigator url="" class="nav_item">
+				<navigator url="../../course-list/course-list/course-list" class="nav_item">
 					<image src="../../static/images/nav-free.png" mode="widthFix"></image>
 					<text class="nav_item_title">免费</text>
 				</navigator>
-				<navigator url="" class="nav_item">
+				<navigator url="../../course-list/course-list/course-list" class="nav_item">
 					<image src="../../static/images/nav-course.png" mode="widthFix"></image>
 					<text class="nav_item_title">教程</text>
 				</navigator>
@@ -54,8 +54,8 @@
 					</view>
 					<navigator class="course_header_more" url="">更多></navigator>
 				</view>
-				<navigator v-for="(item, index) in courseItems" :url="item.url" :key="item.id">
-					<course-item :courseInfo="item.courseInfo"></course-item>
+				<navigator v-for="item in courseItems" :key="item._id">
+					<course-item :courseInfo="item"></course-item>
 				</navigator>
 			</view>
 			<view class="window-bottom"></view>
@@ -65,8 +65,6 @@
 
 <script>
 	import { getCourse } from '@/api/course.js';
-	// import courseLive from '../../components/course-live/course-live.vue'
-	// import courseItem from '../../components/course-item/course-item.vue'
 
 	export default {
 		data() {
@@ -92,38 +90,35 @@
 						}
 					}
 				],
-				courseItems: [
-					{
-						id: 1,
-						url: '../../course-details/course-details/course-details',
-						courseInfo: {
-							imgUrl: '../../static/images/Pr.png',
-							title: '零基础入门Premiere',
-							describe: '全年爆款，快速提升软件能力，从此不加班',
-							author: '小米老师',
-							price: '324',
-							authorImg: '../../static/images/author-icon.png'
-						}
-					},
-					{
-						id: 2,
-						url: '',
-						courseInfo: {
-							imgUrl: '../../static/images/Pr.png',
-							title: '零基础入门PS',
-							describe: '全年爆款，快速提升软件能力，从此不加班',
-							author: '小绵老师',
-							price: '300',
-							authorImg: '../../static/images/author-icon.png'
-						}
-					},
-				]
+				courseItems: []
+				// courseItems: [
+				// 	{
+				// 		id: 1,
+				// 		url: '../../course-details/course-details/course-details',
+				// 		courseInfo: {
+				// 			imgUrl: '../../static/images/Pr.png',
+				// 			title: '零基础入门Premiere',
+				// 			describe: '全年爆款，快速提升软件能力，从此不加班',
+				// 			author: '小米老师',
+				// 			price: '324',
+				// 			authorImg: '../../static/images/author-icon.png'
+				// 		}
+				// 	},
+				// 	{
+				// 		id: 2,
+				// 		url: '',
+				// 		courseInfo: {
+				// 			imgUrl: '../../static/images/Pr.png',
+				// 			title: '零基础入门PS',
+				// 			describe: '全年爆款，快速提升软件能力，从此不加班',
+				// 			author: '小绵老师',
+				// 			price: '300',
+				// 			authorImg: '../../static/images/author-icon.png'
+				// 		}
+				// 	},
+				// ]
 			};
 		},
-		// components: {
-		// 	courseLive,
-		// 	courseItem
-		// },
 		onLoad() {
 			this.getList()
 		},
@@ -131,8 +126,7 @@
 			getList() {
 				getCourse()
 					.then((res) => {
-						console.log('获取课程列表成功')
-						console.log(res)
+						this.courseItems = res.data;
 					})
 					.catch((err) => {
 						console.log('获取课程列表失败')
